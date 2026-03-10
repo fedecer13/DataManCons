@@ -17,6 +17,7 @@
 
 
 
+
 # --- 1) Imposta l'email usata da Git per i commit (metti la TUA email) ---
 system('git config --global user.email "Your@Email.com"')
 
