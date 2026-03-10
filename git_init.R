@@ -68,8 +68,11 @@ gitcreds::gitcreds_set()
 # --- 6)  Creare una repository su GitHub ---
 
 # --- 7)  Collegare il repository locale al repository GitHub ---
+usethis::use_git_config(user.name = "YourName", user.email = "youremail")
 
 system("git remote add origin https://github.com/STUDENTE/nomecartella.git")
+
+usethis::use_git_remote(name = "origin", url = "https://github.com/STUDENTE/nomecartella.git")
 
 # Controlliamo che il collegamento esista
 
