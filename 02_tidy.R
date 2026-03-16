@@ -8,7 +8,7 @@
 # dplyr contiene molte funzioni base del tidyverse per manipolare dati
 #install.packages("tidyverse")
 library(tidyverse)
-
+library(palmerpenguins)
 
 ### 2) DATASET DI PARTENZA -----------------------------------
 
@@ -186,13 +186,10 @@ iris %>%
   select(-Species)
 
 
-library(tidyverse)
-library(palmerpenguins)
-
 # Per vedere bene le variabili disponibili
 glimpse(penguins)
 data(penguins)
-?glimpse
+?glimpse ## ask for help
 
 View(penguins)
 head(penguins)
@@ -202,29 +199,29 @@ str(penguins)
 # ESERCIZI
 ############################################################
 
+data("penguins")
+
 ### ESERCIZIO 1
 # Seleziona solo le colonne:
 # species, island, bill_length_mm, body_mass_g
 
-penguins_raw$`Culmen Depth (mm)`
-
-penguins_raw |> 
-  select(`Culmen Depth (mm)`)
+penguins |> 
+  select(species, island, bill_length_mm, body_mass_g)
 
 
 ### ESERCIZIO 2
 # Mostra solo i pinguini dell'isola Dream
-# e tieni solo le colonne species, island e sex
+# e tieni solo le colonne species e sex
 
 penguins |> 
   filter(island == "Dream") |> 
-  select(species, bill_length_mm)
+  select(species, sex)
 
+# penguins |> 
+#   select(species, sex) |> 
+#   filter(island == "Dream") ### non funziona... perchè? 
 
-penguins |> 
-  select(species, bill_length_mm) |> 
-  filter(island == "Dream") 
-
+# perché filter() cerca la colonna island che non c'è più dopo select()
 
 
 
@@ -232,12 +229,18 @@ penguins |>
 # Mostra solo i pinguini con body_mass_g maggiore di 5000
 # e tieni solo species, island e body_mass_g
 
+penguins |> 
+  filter(body_mass_g > 5000) |> 
+  select(species, island, body_mass_g)
 
 
 ### ESERCIZIO 4
 # Mostra solo i pinguini della specie Adelie
 # che si trovano sull'isola Torgersen
 
+penguins |> 
+  filter(species == "Adelie", island == "Torgersen") |> 
+  select(species, island)
 
 ### ESERCIZIO 5
 # Mostra solo i pinguini che NON appartengono alla specie Adelie
@@ -248,11 +251,14 @@ penguins_mod <- penguins |>
   select(species, bill_length_mm, bill_depth_mm) |> 
   mutate(species = droplevels(species))
 
+# posso anche selezionare solo le specie che mi interessano invece di escludere Adelie
 penguins |> 
-  filter( species == "Gentoo" | species == "Chinstrap")
+  filter( species == "Gentoo" | species == "Chinstrap") 
 
+# posso farlo anche con %in% che è più comodo quando le specie sono tante
+# %in% è un operatore che verifica se un valore è presente in un vettore
 penguins |> 
-  filter(species %in%  c("Chinstrap", "Gentoo"))
+  filter(species %in%  c("Chinstrap", "Gentoo")) 
 
 ### ESERCIZIO 6
 # Mostra solo i pinguini con flipper_length_mm > 200
