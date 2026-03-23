@@ -1,0 +1,231 @@
+---
+title: "Esercitazione R – Analisi completa di un dataset reale"
+author: "Michele Di Musciano"
+format: pdf
+---
+
+# Obiettivo
+
+Questa esercitazione ha l’obiettivo di guidarvi attraverso un workflow completo di analisi dati in R, utilizzando un dataset reale.
+
+Dovrete:
+- creare una nuoava cartella e un nuovo progetto
+- scegliere un dataset reale (es. Zenodo)
+- importarlo e pulirlo
+- trasformarlo
+- analizzarlo
+- visualizzarlo
+- esportare i risultati
+
+---
+
+# Requisiti del dataset
+
+Il dataset scelto deve avere almeno:
+
+- una variabile numerica continua
+- una seconda variabile numerica
+- una variabile categorica (oppure creabile)
+- almeno 30 osservazioni
+
+Non utilizzare dataset già inclusi in R (iris, penguins, ecc.).
+
+---
+
+# PARTE 1 – Scelta e importazione
+
+1. Scegli un dataset reale da Zenodo o altro repository.
+
+2. Inserisci nel codice:
+   - titolo dataset  
+   - autore/i  
+   - anno  
+   - link o DOI  
+   - breve descrizione  
+
+3. Organizza la cartella di lavoro:
+   - data_raw  
+   - data_clean  
+   - output  
+   - figures  
+
+4. Importa il dataset in R.
+
+5. Salvalo come `dati_raw`.
+
+6. Esplora il dataset:
+   - `head()`
+   - `str()`
+   - `dim()`
+   - `names()`
+
+---
+
+# PARTE 2 – Controllo qualità
+
+7. Conta righe e colonne.
+
+8. Controlla nomi delle colonne.
+
+9. Rinomina colonne in modo chiaro.
+
+10. Verifica presenza di NA.
+
+11. Individua quali colonne hanno NA.
+
+12. Decidi come gestire i NA (documenta la scelta).
+
+13. Controlla i tipi di variabili.
+
+14. Converti i tipi se necessario.
+
+---
+
+# PARTE 3 – Pulizia
+
+15. Crea un dataset pulito.
+
+16. Usa `select()` per mantenere solo le variabili utili.
+
+17. Usa `filter()` per rimuovere dati problematici.
+
+18. Commenta tutte le scelte fatte.
+
+---
+
+# PARTE 4 – Nuove variabili
+
+19. Crea almeno una nuova variabile numerica (`mutate()`).
+
+20. Crea una variabile categorica (`case_when()`).
+
+21. Trasforma una variabile numerica in classi basate sui quartili.
+
+   Esempio:
+   - very low
+   - low
+   - high
+   - very high
+
+22. Se manca una variabile categorica, creane una.
+
+---
+
+# PARTE 5 – Analisi descrittiva
+
+23. Calcola:
+   - media
+   - deviazione standard
+   - minimo
+   - massimo
+
+24. Usa `group_by()` + `summarise()`.
+
+25. Conta osservazioni per gruppo.
+
+26. Crea almeno una tabella riassuntiva completa.
+
+27. Analizza almeno due variabili categoriali insieme.
+
+---
+
+# PARTE 6 – Pivot
+
+28. Crea una tabella in formato wide.
+
+29. Usa `pivot_longer()`.
+
+30. Spiega perché il formato long è utile.
+
+31. Usa `pivot_wider()`.
+
+32. Commenta differenza tra long e wide.
+
+---
+
+# PARTE 7 – Grafici
+
+33. Scatterplot tra due variabili numeriche.
+
+34. Aggiungi:
+   - titolo
+   - etichette
+   - tema
+
+35. Colora per categoria.
+
+36. Boxplot (numerica vs categorica).
+
+37. Barplot da dati aggregati.
+
+38. Grafico con dati in formato long.
+
+39. Salva i grafici in `figures/`.
+
+---
+
+# PARTE 8 – Output
+
+40. Esporta una tabella pulita (`.csv`).
+
+41. Esporta una tabella riassuntiva.
+
+42. Esporta almeno 3 grafici.
+
+43. Salva il dataset finale (`.rds`).
+
+---
+
+# PARTE 9 – Interpretazione
+
+Scrivi 5–10 righe rispondendo:
+
+- Che dataset hai scelto?
+- Problemi incontrati?
+- Variabili utilizzate?
+- Grafico più informativo?
+- Risultato principale?
+
+---
+
+# PARTE 10 – Consegna
+
+Consegnare:
+
+- file `.R`
+- dataset o link
+- tabelle esportate
+- grafici esportati
+- breve interpretazione
+
+---
+
+# PARTE 11 – GitHub (OBBLIGATORIO)
+
+45. Caricare tutto su GitHub:
+
+- creare repository
+- aggiungere file
+- commit
+- push
+
+Il repository deve contenere:
+
+- codice
+- output
+- struttura ordinata delle cartelle
+
+Il repository NON deve contenere:
+
+- I DATI nè grezzi nè puliti.
+
+---
+
+# Note finali
+
+- codice chiaro e commentato
+- nomi oggetti leggibili
+- evitare dati inutili nel repository
+- utilizzare `.gitignore` se necessario
+
+---

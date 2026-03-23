@@ -83,7 +83,26 @@ penguins_long <- penguins_summary |>
     values_to = "value"
   )
 
-penguins_long
+
+penguins |>
+  group_by(species) |>
+  summarise(
+    mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
+    mean_bill_depth = mean(bill_depth_mm, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = -species,
+    names_to = "measure",
+    values_to = "value"
+  ) |> 
+  ggplot(aes(x = species, y = value, fill = measure)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Two measures in long format",
+    x = "Species",
+    y = "Value (mm)",
+    fill = "Misurazioni"
+  )
 
 # Ora i dati sono in formato LONG:
 # species = gruppo
@@ -103,8 +122,8 @@ ggplot(penguins_long, aes(x = species, y = value, fill = measure)) +
   labs(
     title = "Two measures in long format",
     x = "Species",
-    y = "Value",
-    fill = "Measure"
+    y = "Value (mm)",
+    fill = "Misurazioni"
   )
 
 # Questo è uno dei motivi per cui il formato long

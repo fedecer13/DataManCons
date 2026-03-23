@@ -17,9 +17,8 @@ glimpse(penguins)
 
 # arrange() serve per ordinare le righe
 
-penguins |>
-  arrange(body_mass_g) |>
-  head()
+peng_arr <- penguins |>
+  arrange(body_mass_g)
 
 penguins |>
   arrange(desc(body_mass_g)) |>
@@ -35,6 +34,7 @@ penguins |>
 
 # Esempio 1: peso medio per specie
 penguins |>
+  #filter(!is.na(body_mass_g)) |> 
   group_by(species) |>
   summarise(
     mean_mass = mean(body_mass_g, na.rm = TRUE)
@@ -56,7 +56,6 @@ penguins |>
     mean_mass = mean(body_mass_g, na.rm = TRUE),
     n = n()
   )
-
 
 ############################################################
 # 3) COUNT
@@ -83,10 +82,10 @@ penguins |>
 penguins |>
   group_by(species) |>
   summarise(
-    mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
-    mean_bill_depth = mean(bill_depth_mm, na.rm = TRUE),
-    mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body_mass = mean(body_mass_g, na.rm = TRUE)
+   mean_bill_length = mean(bill_length_mm,na.rm = TRUE),
+   mean_bill_depth = mean(bill_depth_mm,na.rm = TRUE),
+   mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+   mean_body_mass = mean(body_mass_g, na.rm = TRUE)
   )
 
 # Questo approccio funziona bene con poche colonne,
@@ -105,7 +104,10 @@ penguins |>
   group_by(species) |>
   summarise(
     across(
-      c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g),
+      c(bill_length_mm, 
+      bill_depth_mm, 
+      flipper_length_mm, 
+      body_mass_g),
       mean,
       na.rm = TRUE
     )
@@ -135,7 +137,12 @@ penguins |>
   )
 
 # Esempio 4: tutte le colonne numeriche
+penguins |> 
+  select(where(is.numeric))
+
+
 penguins |>
+  mutate(year = as.factor(year)) |> 
   group_by(species) |>
   summarise(
     across(
