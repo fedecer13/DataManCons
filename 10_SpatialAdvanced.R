@@ -264,7 +264,7 @@ pp_slope <- ggplot() +
     y = "Latitude",
     fill = "Slope (°)"
   ) +
-  scale_fill_continuous(na.value = "transparent") +
+  scale_fill_viridis_c(option = "magma", na.value = "transparent") +
   annotation_scale(location = "bl") +
   annotation_north_arrow(location = "tr", which_north = "true",
                          height = unit(1.5, "cm"),
