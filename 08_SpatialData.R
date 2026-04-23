@@ -4,7 +4,6 @@ library(geodata)        # download dati geografici semplici
 library(tidyverse)
 library(rnaturalearth)
 
-
 # I dati spaziali si dividono molto spesso in due grandi famiglie:
 #
 # 1. dati vettoriali
@@ -34,7 +33,7 @@ sites_df <- data.frame(
   lat = c(42.35, 42.45, 42.25)
 )
 
-sites_df
+
 
 # Convertiamo il data frame in oggetto spaziale sf
 
